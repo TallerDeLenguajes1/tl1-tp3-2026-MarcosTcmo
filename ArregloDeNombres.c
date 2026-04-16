@@ -10,7 +10,7 @@ int main(){
     for (int i = 0; i < 5; i++)
     {
         puts("Ingrese un Nombre");
-        scanf("%s", &nombre);
+        gets(nombre);
         tamanioCadena = strlen(nombre);
         nombres[i] = (char *) malloc ((tamanioCadena + 1) * sizeof(char));
         strcpy(nombres[i],nombre);
