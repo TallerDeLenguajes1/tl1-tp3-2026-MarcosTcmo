@@ -36,11 +36,20 @@ void *mostrarVector(char *vectorReceptor[], int cantidad){
     }   
 }
 void *buscarNombre(char *vectorReceptor[],int cantidad,int indiceBuscar){
-    if (indiceBuscar < 6 && indiceBuscar > 0)
+    int bandera = 0;
+    for (int i = 0; i < cantidad; i++)
+    {
+        if (i == indiceBuscar)
         {
-            printf("Este es el nombre con el indice %d: %s\n",indiceBuscar,vectorReceptor[indiceBuscar - 1]);
-        }else{
-            printf("No se encontro el valor buscado\n");
+            bandera = 1;
         }
+    }
+    if (bandera)
+    {
+        printf("Este es el nombre encontrado en la posicion %d: %s\n",indiceBuscar,vectorReceptor[indiceBuscar - 1]);
+    }else{
+        puts("No se encontro el valor buscado");
+    }
+    
     
 }
