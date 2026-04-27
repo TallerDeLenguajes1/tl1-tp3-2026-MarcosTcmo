@@ -49,7 +49,5 @@ void *buscarNombre(char *vectorReceptor[],int cantidad,int indiceBuscar){
         printf("Este es el nombre encontrado en la posicion %d: %s\n",indiceBuscar,vectorReceptor[indiceBuscar - 1]);
     }else{
         puts("No se encontro el valor buscado");
-    }
-    
-    
+    }   
 }
