@@ -3,15 +3,15 @@
 #include <string.h>
 
 void mostrarVector(char *vectorReceptor[], int cantidad);
-void BuscarNombre(char *vectorReceptor[], int cantidad, char *nombreABuscar);
+char *BuscarNombre(char *vectorReceptor[], int cantidad, char *nombreABuscar);
 
 int main(){
-    char *nombres[5],nombre[50],*nombreABuscar;
+    char *nombres[5],nombre[50],*nombreABuscar,*vectorDevuelto;
     int tamanioCadena = 0;
     for (int i = 0; i < 5; i++)
     {
         puts("Ingrese un Nombre");
-        gets(nombre);
+        fgets(nombre, 50, stdin);
         tamanioCadena = strlen(nombre);
         nombres[i] = (char *) malloc ((tamanioCadena + 1) * sizeof(char));
         strcpy(nombres[i],nombre);
@@ -23,11 +23,13 @@ int main(){
     scanf("%s", &nombre);
     nombreABuscar = (char *) malloc ((strlen(nombre) + 1) * sizeof(char));
     strcpy(nombreABuscar,nombre);
-    BuscarNombre(nombres,5,nombreABuscar);
+    vectorDevuelto = BuscarNombre(nombres,5,nombreABuscar);
+    puts(vectorDevuelto);
     for (int i = 0; i < 5; i++)
     {
         free(nombres[i]);
     }
+    free(vectorDevuelto);
     
     
 
@@ -43,9 +45,20 @@ void mostrarVector(char *vectorReceptor[], int cantidad){
     }    
 }
 
-void BuscarNombre(char *vectorReceptor[], int cantidad, char *nombreABuscar){
-    char *resultado;
-    resultado = strstr(vectorReceptor,nombreABuscar);
-    printf("%s", *resultado);
+char *BuscarNombre(char *vectorReceptor[], int cantidad, char *nombreABuscar){
+    char *resultado,*vectorDevuelto;
+    for (int i = 0; i < cantidad; i++)
+    {
+        resultado = strstr(vectorReceptor[i],nombreABuscar);
+        if (resultado != NULL)
+        {
+            vectorDevuelto = (char *) malloc ((strlen(vectorReceptor[i]) + 1) * sizeof(char));
+            strcpy(vectorDevuelto,vectorReceptor[i]);
+            return vectorDevuelto;
+        }
+    }
+    vectorDevuelto = (char *) malloc (3 * sizeof(char));
+    strcpy(vectorDevuelto,"-1");
+    return vectorDevuelto;
     
 }
