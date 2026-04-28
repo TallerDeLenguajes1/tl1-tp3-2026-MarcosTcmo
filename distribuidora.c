@@ -35,14 +35,14 @@ int main()
     char nombreClienteTemporal[50];
     int cantidadClientes = 0, idProductoRandom = 0;
     float costoTotalProductos, costoTotalTodosProductos = 0;
-    puts("Buenos Dias\n¿Cuantos Clientes quiere ingresar el dia de hoy?");
+    puts("Buenos Dias\nCuantos Clientes quiere ingresar el dia de hoy?");
     scanf("%d", &cantidadClientes);
     limpiarBuffer();
     Cliente *clientesCargados;
     clientesCargados = (Cliente *)malloc(cantidadClientes * sizeof(Cliente));
     for (int i = 0; i < cantidadClientes; i++)
     {
-        printf("Cargue el nombre del cliente: %d", i);
+        printf("Cargue el nombre del cliente: %d\n", i + 1);
         scanf("%s", &nombreClienteTemporal);
         limpiarBuffer();
         clientesCargados[i].NombreCliente = (char *)malloc((strlen(nombreClienteTemporal) + 1) * (sizeof(char)));
@@ -79,10 +79,10 @@ float costoTotal(Producto productoRecibido)
 }
 void mostrarPorPantalla(Cliente mostrar, float precioTotal)
 {
-    printf("Cliente numero :%d\nNombre : %s\nCantidad productos a pedir: %d\n", mostrar.ClienteID, mostrar.NombreCliente, mostrar.CantidadProductosAPedir);
+    printf("Cliente numero :%d\nNombre : %s\nCantidad productos a pedir: %d\n", mostrar.ClienteID + 1, mostrar.NombreCliente, mostrar.CantidadProductosAPedir);
     for (int i = 0; i < mostrar.CantidadProductosAPedir; i++)
     {
-        printf("---------------\nProducto Id: %d\nCantidad Productos: %d\nProducto pedido: %s\nPrecio Unitario: %.2f\n---------------", mostrar.Productos[i].ProductoID, mostrar.Productos[i].Cantidad, mostrar.Productos[i].TipoProducto, mostrar.Productos[i].PrecioUnitario);
+        printf("---------------\nProducto Id: %d\nCantidad Productos: %d\nProducto pedido: %s\nPrecio Unitario: %.2f\n---------------", mostrar.Productos[i].ProductoID + 1, mostrar.Productos[i].Cantidad, mostrar.Productos[i].TipoProducto, mostrar.Productos[i].PrecioUnitario);
     }
-    printf("\nCosto total de los pedidos: %.2f", precioTotal);
+    printf("\nCosto total de los pedidos: %.2f\n", precioTotal);
 }
